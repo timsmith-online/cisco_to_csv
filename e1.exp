@@ -1,0 +1,28 @@
+#!/usr/bin/expect -f
+
+#exp_internal 1
+
+set timeout 10
+set user ""
+set pswd ""
+set host_ip [lindex $argv 0]
+set host [lindex $argv 1]
+set prompt {[#]}
+
+set sprompt "${host}${prompt}"
+
+eval spawn ssh -o UserKnownHostsFile=/dev/null -o PubKeyAuthentication=no -o StrictHostKeyChecking=no -o CheckHostIP=no ${user}@${host_ip}
+expect "Password:"
+
+send "$pswd\r"
+expect "$prompt"
+
+send "terminal length 0\r"
+expect "$sprompt"
+
+send "sh run\r"
+expect "$sprompt"
+sleep 5
+
+send "exit\r"
+expect eof
