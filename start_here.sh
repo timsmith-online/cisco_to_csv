@@ -10,5 +10,5 @@ echo "$site_id"
 
 format_config=$(echo "$RCONFIG" | grep -E '^(interface (Apphosting|ATM|Ethernet|FastEthernet|FortyGigabitEthernet|FourHundredGigabitEthernet|GigabitEthernet|HundredGigabitEthernet|HundredGigE|Interface_ign|Loopback|Management|Port\-channel|POS|Router|Serial|Switch|TenGigabitEthernet|Tunnel|TwentyFiveGigabitEthernet|TwentyFiveGigE|TwoHundredGigabitEthernet|Vlan)|[[:space:]]+description|[[:space:]]+switchport (access|mode|trunk|voice))' | grep -A5 "interface" | grep -v "\-\-\|pruning");
 echo "$format_config" > cisco1.config && ./format_conf.sh;
-python3 ./block.py && python3 to_csv.py "$site_id" "$site_ip";
+python3 ./block.py && python3 ./to_csv.py "$site_id" "$site_ip";
 rm ./cisco1.config;
