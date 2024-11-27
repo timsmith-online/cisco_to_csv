@@ -51,7 +51,7 @@ status_func() {
 
 format_config=$(echo "$RCONFIG" | grep -E '^(interface (Apphosting|ATM|Ethernet|FastEthernet|FortyGigabitEthernet|FourHundredGigabitEthernet|GigabitEthernet|HundredGigabitEthernet|HundredGigE|Interface_ign|Loopback|Management|Port\-channel|POS|Router|Serial|Switch|TenGigabitEthernet|Tunnel|TwentyFiveGigabitEthernet|TwentyFiveGigE|TwoHundredGigabitEthernet|TwoGigabitEthernet|Vlan)|[[:space:]]+description|[[:space:]]+switchport (access|mode|trunk|voice))' | grep -A6 "interface" | grep -v "\-\-\|pruning");
 echo "$format_config" > cisco1.config && ./g3.sh;
-python3 ./exs.py && python3 ./rcsv.py "$site_id" "$site_ip";
+python3 ./block.py && python3 ./rcsv.py "$site_id" "$site_ip";
 rm ./cisco1.config;
 
 # Snooping
@@ -85,4 +85,4 @@ fi
 
 status_func
 
-python3 ./g4.py;
+python3 ./gto_csv.py;
