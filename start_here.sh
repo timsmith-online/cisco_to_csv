@@ -50,7 +50,7 @@ status_func() {
 
 
 format_config=$(echo "$RCONFIG" | grep -E '^(interface (Apphosting|ATM|Ethernet|FastEthernet|FortyGigabitEthernet|FourHundredGigabitEthernet|GigabitEthernet|HundredGigabitEthernet|HundredGigE|Interface_ign|Loopback|Management|Port\-channel|POS|Router|Serial|Switch|TenGigabitEthernet|Tunnel|TwentyFiveGigabitEthernet|TwentyFiveGigE|TwoHundredGigabitEthernet|TwoGigabitEthernet|Vlan)|[[:space:]]+description|[[:space:]]+switchport (access|mode|trunk|voice))' | grep -A6 "interface" | grep -v "\-\-\|pruning");
-echo "$format_config" > cisco1.config && ./g3.sh;
+echo "$format_config" > cisco1.config && ./format_conf.sh;
 python3 ./block.py && python3 ./rcsv.py "$site_id" "$site_ip";
 rm ./cisco1.config;
 
