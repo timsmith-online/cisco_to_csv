@@ -85,4 +85,4 @@ fi
 
 status_func
 
-python3 ./gto_csv.py;
+python3 ./to_csv.py;
