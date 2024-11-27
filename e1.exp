@@ -24,5 +24,17 @@ send "sh run\r"
 expect "$sprompt"
 sleep 5
 
+send "sh ip dhcp snooping binding\r"
+expect "$sprompt"
+sleep 5
+
+send "show ip interface brief\r"
+expect "$sprompt"
+sleep 5
+
+send "show int status\r"
+expect "$sprompt"
+sleep 5
+
 send "exit\r"
 expect eof
