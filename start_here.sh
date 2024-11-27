@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 site_ip=$1
-RCONFIG=$(./g1.exp "$site_ip")
+RCONFIG=$(./e1.exp "$site_ip")
 site=$(cat /etc/hosts | grep -i "$site_ip" | awk -F, '{print $1 " " $2}')
 site_id=$(awk '{print $1}' <<< "$site")
 
